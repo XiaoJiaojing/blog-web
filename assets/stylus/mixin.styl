@@ -1,0 +1,61 @@
+//需要引入mixin才能使用
+
+//app常用色值
+color_border = #ddd
+color_primary = #298CE5
+color_bg = #f4f5f5
+color_txt_nav = #ffffff
+color_txt_title = #333
+color_txt_content = #666
+color_txt_ps = #999
+color_txt_btn = #ffffff
+color_slide = #222
+color_txt_item_title = #666
+color_txt_item_content = #666
+
+size_title = 30px
+size_item_title = 18px
+size_item_content = 16px
+size_item_ps = 14px
+padding_content = 30px
+
+//定义一个函数
+border-1px($color = color_border)
+  position: relative
+  &:before, &:after
+    border-top: 1px solid $color
+    content: ' '
+    display: block
+    width: 100%
+    position: absolute
+    left: 0
+  &:before
+    top: 0
+  &:after
+    bottom: 0
+
+border-1px-bottom($color = color_border)
+  position: relative
+  &:after
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    border-top: 1px solid $color
+    content: ' '
+
+border-1px-top($color = color_border)
+  position: relative
+  &:before
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    border-top: 1px solid $color
+    content: ' '
+
+border-none-bottom()
+  &:after
+    display: none

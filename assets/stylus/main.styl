@@ -1,0 +1,65 @@
+@import "mixin.styl";
+
+.app-title-1
+  font-size: 24px
+  font-weight: 400
+  line-height: 30px
+  color: color_txt_title
+
+.app-content-1
+  font-size: 14px
+  line-height: 16px
+  color: color_txt_content
+
+.app-content-2
+  font-size: 12px
+  line-height: 14px
+  color: color_txt_content
+
+.app-btn-1
+  background color_primary
+  color color_txt_btn
+  padding 5px 10px
+  font-size 12px
+  -webkit-appearance: none;
+  border-radius: 1px;
+  border: none;
+  outline: none;
+
+.app-a
+  color color_primary
+  font-size 14px
+
+.app-a-1
+  color color_primary
+  font-size 12px
+
+.time-1
+  font-size 12px
+  color: color_txt_ps
+
+@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)
+  .border-1px
+    &::after
+      -webkit-transform: scaleY(0.7)
+      transform: scaleY(0.7)
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2)
+  .border-1px
+    &::after
+      -webkit-transform: scaleY(0.5)
+      transform: scaleY(0.5)
+
+a, a:hover
+  color: color_primary
+  text-decoration: none
+
+*
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+
+
+
+
