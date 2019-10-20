@@ -3,7 +3,7 @@
         <div v-if="flag">
             <div class="content" v-for="item in msg" :key="item._id">
                 <h2 v-html="item.title"></h2>
-                <p v-html="item.abstract"></p>
+                <p class="markdown-body" v-html="item.abstract"></p>
 
                 <router-view></router-view>
                 <router-link :to="'/home/more/'+item._id">阅读更多
@@ -22,8 +22,10 @@
 </template>
 
 <script>
+
     import marked from 'marked'
     import hljs from 'highlight.js'
+    import 'github-markdown-css/github-markdown.css'
 
     marked.setOptions({
         renderer: new marked.Renderer(),
@@ -34,7 +36,7 @@
         sanitize: true,
         smartLists: true,
         smartypants: false,
-        highlight(code) {
+        highlight: function (code) {
             return hljs.highlightAuto(code).value;
         }
     })
@@ -43,8 +45,8 @@
         data() {
             return {
                 msg: [],
-                id:'',
-                page:1,
+                id: '',
+                page: 1,
                 flag: true
             }
         },
@@ -53,20 +55,20 @@
         },
         methods: {
             getDocument() {
-                this.$http.get('/home?page='+this.page).then(result => {
+                this.$http.get('/home?page=' + this.page).then(result => {
                     console.log(result)
-                    if(result.body.err_code ==='200'){
+                    if (result.body.err_code === '200') {
                         this.msg = result.body.msg
-                        this.msg.forEach(item=>{
-                            item.abstract = marked(item.abstract,{sanitize: true})
+                        this.msg.forEach(item => {
+                            item.abstract = marked(item.abstract, {sanitize: true})
                         })
-                        if(!this.msg.length){
+                        if (!this.msg.length) {
                             this.flag = false
                         }
                     }
                 })
             },
-            getNext () {
+            getNext() {
                 this.page++
                 this.getDocument()
             }
@@ -82,41 +84,28 @@
             font-weight: 400;
             color: #333;
         }
+
         p {
             color: #666;
             margin: 30px 0;
         }
-        a,a:hover{
+
+        a, a:hover {
             color: #2489CC;
             cursor: pointer;
         }
 
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             .next {
                 margin-left: 75%;
             }
         }
-        @media (min-width:768px) {
+        @media (min-width: 768px) {
             .next {
                 margin-left: 90%;
             }
         }
 
-
-
-    }
-    .markdown-body {
-        box-sizing: border-box;
-        min-width: 200px;
-        max-width: 980px;
-        margin: 0 10px;
-        padding: 45px 0px;
     }
 
-    @media (max-width: 767px) {
-        .markdown-body {
-            padding: 15px;
-        }
-    }
-    @import "../../../assets/css/atom-one-dark.min.css";
 </style>
