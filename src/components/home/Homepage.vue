@@ -1,15 +1,25 @@
 <template>
     <div>
-        <h3>JavaScript 数据结构</h3>
-        <p>数据结构是我们学习的基础</p> <br>
-        <p>学好数据结构可以让我们走的更长远</p><br>
+        <div v-if="flag">
+            <div class="content" v-for="item in msg" :key="item._id">
+                <h2 v-html="item.title"></h2>
+                <p v-html="item.abstract"></p>
+                <p v-html="item._id"></p>
 
-        <p class="markdown-body" v-html="msg"></p>
-
-        <a>阅读更多</a>
-
-
+                <router-view></router-view>
+                <router-link :to="'/home/more/'+item._id">阅读更多
+                    <span class="fa fa-angle-double-right"></span>
+                </router-link>
+                <hr>
+            </div>
+            <a href="#" @click="getNext" class="next">下一页
+                <span class="fa fa-angle-double-right"></span>
+            </a>
+            <hr>
+        </div>
+        <h5 v-if="!flag">没有更多</h5>
     </div>
+
 </template>
 
 <script>
@@ -33,7 +43,10 @@
     export default {
         data() {
             return {
-                msg: ''
+                msg: [],
+                id:'',
+                page:1,
+                flag: true
             }
         },
         created() {
@@ -41,13 +54,23 @@
         },
         methods: {
             getDocument() {
-                this.$http.get('/home').then(result => {
-                    console.log(result.body.msg)
 
-                    this.msg = marked(result.body.msg, {
-                        sanitize: true
-                    });
+                this.$http.get('/home?page='+this.page).then(result => {
+                    console.log(result)
+                    if(result.body.err_code ==='200'){
+                        this.msg = result.body.msg
+                        this.msg.forEach(item=>{
+                            item.abstract = marked(item.abstract,{sanitize: true})
+                        })
+                        if(!this.msg.length){
+                            this.flag = false
+                        }
+                    }
                 })
+            },
+            getNext () {
+                this.page++
+                this.getDocument()
             }
         }
     }
@@ -55,6 +78,26 @@
 
 
 <style lang="scss" scoped>
+    .content {
+
+        h2 {
+            font-weight: 400;
+            color: #333;
+        }
+        p {
+            color: #666;
+            margin: 30px 0;
+        }
+        a,a:hover{
+            color: #2489CC;
+            cursor: pointer;
+        }
+        .next {
+           margin-left: 90%;
+        }
+
+
+    }
     .markdown-body {
         box-sizing: border-box;
         min-width: 200px;

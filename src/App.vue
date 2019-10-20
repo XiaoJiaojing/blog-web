@@ -7,27 +7,23 @@
 
         <!--左侧导航栏-->
         <div class="left" ref="leftnav">
-
-
-
             <h5>肖娇静的博客</h5>
-
-                <router-link class="supai" to="/home" >
-                    <span class="fa fa-home"></span>
-                    <span>首页</span>
-                </router-link>
-                <router-link class="supai" to="/tag">
-                    <span class="fa fa-tags"></span>
-                    <span>标签</span>
-                </router-link>
-                <router-link class="supai" to="/about">
-                    <span class="fa fa-bars"></span>
-                    <span>关于</span>
-                </router-link>
-                <router-link class="supai" to="/person">
-                    <span class="fa fa-user"></span>
-                    <span >个人</span>
-                </router-link>
+            <router-link class="supai" to="/home" >
+                <span class="fa fa-home"></span>
+                <span>首页</span>
+            </router-link>
+            <router-link class="supai" to="/tag">
+                <span class="fa fa-tags"></span>
+                <span>标签</span>
+            </router-link>
+            <router-link class="supai" to="/about">
+                <span class="fa fa-bars"></span>
+                <span>关于</span>
+            </router-link>
+            <router-link class="supai" to="/person">
+                <span class="fa fa-user"></span>
+                <span >个人</span>
+            </router-link>
         </div>
 
         <!--右侧内容区域-->
@@ -147,7 +143,7 @@ export default {
                 }
             }
             .right {
-                margin-left: 90px;
+                margin-left: 140px;
             }
 
         }
@@ -183,7 +179,8 @@ export default {
                 }
             }
             .right {
-                margin-left: 250px;
+                margin-left: 300px;
+                padding-top: 50px;
             }
         }
     }
