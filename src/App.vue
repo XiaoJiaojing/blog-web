@@ -44,7 +44,14 @@ export default {
     },
     methods: {
         xianshi () {
-            console.log(this.$refs.leftnav.style)
+            if(this.$refs.topbar.className === 'fa fa-bars'){
+                this.$refs.topbar.className = 'fa fa-close'
+            } else if(this.$refs.topbar.className = 'fa fa-close'){
+
+                // this.$refs.topbar.className === 'fa fa-bars'
+                this.$refs.topbar.className = ('fa fa-bars')
+            }
+
             if(this.$refs.leftnav.style.display === ''){
                 this.$refs.leftnav.style.display ='block'
                 this.$refs.conright.style.marginLeft = '250px'
@@ -108,7 +115,9 @@ export default {
 
         }
         .right {
-            padding-top: 50px;
+            padding-top: 70px;
+            padding-left: 15px;
+            padding-right: 15px;
         }
     }
     @media (min-width: 768px) {

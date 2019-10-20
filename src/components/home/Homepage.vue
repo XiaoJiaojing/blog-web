@@ -4,7 +4,6 @@
             <div class="content" v-for="item in msg" :key="item._id">
                 <h2 v-html="item.title"></h2>
                 <p v-html="item.abstract"></p>
-                <p v-html="item._id"></p>
 
                 <router-view></router-view>
                 <router-link :to="'/home/more/'+item._id">阅读更多
@@ -54,7 +53,6 @@
         },
         methods: {
             getDocument() {
-
                 this.$http.get('/home?page='+this.page).then(result => {
                     console.log(result)
                     if(result.body.err_code ==='200'){
@@ -92,9 +90,18 @@
             color: #2489CC;
             cursor: pointer;
         }
-        .next {
-           margin-left: 90%;
+
+        @media (max-width: 768px){
+            .next {
+                margin-left: 75%;
+            }
         }
+        @media (min-width:768px) {
+            .next {
+                margin-left: 90%;
+            }
+        }
+
 
 
     }
