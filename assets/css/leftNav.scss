@@ -1,0 +1,104 @@
+@color: '#fff'
+/*提取公共样式*/
+.baseStyle{
+  position: fixed;
+  color: #fff;
+  text-align: center;
+}
+
+/*将左边导航栏的公共样式进行封装*/
+.leftCommonStyle{
+    .baseStyle();
+    padding-top: 200px;
+    height: 100%;
+    background-color: dimgrey;
+    float: left;
+
+}
+/*左侧导航栏每个li的排列样式*/
+.supai {
+  display: block;
+  width: 100%;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  color: #fff;
+  text-decoration: none;
+  .fa {
+    margin-right: 10px;
+  }
+}
+
+/*一下是借用媒体查询写的响应式样式*/
+/*超小屏设备*/
+@media (max-width: 768px) {
+  .top {
+    span {
+      font-size: 24px;
+      float: left;
+      padding-left: 10px;
+      padding-top: 13px;
+    }
+    .baseStyle();
+    width: 100%;
+    height: 50px;
+    background-color: grey;
+    line-height: 50px;
+
+  }
+  .left {
+    display: none;
+    h5 {
+      display: block;
+    }
+    .leftCommonStyle();
+    width: 250px;
+
+    .supai();
+
+  }
+  .right {
+    padding-top: 70px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+/*小屏设备*/
+@media (min-width: 768px) {
+  .top {
+    display: none;
+  }
+  .content {
+    .left {
+      h5 {
+        display: none;
+      }
+      .leftCommonStyle();
+      width: 90px;
+      .supai();
+    }
+    .right {
+      margin-left: 140px;
+    }
+  }
+}
+/*中屏以上设备*/
+@media (min-width: 992px) {
+  .top {
+    display: none;
+  }
+  .content {
+    .left {
+      h5 {
+        display: block;
+      }
+      .leftCommonStyle();
+      width: 250px;
+      .supai();
+    }
+    .right {
+      margin-left: 300px;
+      padding-top: 50px;
+    }
+  }
+}
