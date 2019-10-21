@@ -8,8 +8,9 @@
     import marked from 'marked'
     import hljs from 'highlight.js'
     import 'github-markdown-css/github-markdown.css'
-    import 'highlight.js/styles/github.css';
-    import 'highlight.js/styles/atom-one-light.css';
+    // import 'highlight.js/styles/github.css';
+    // import 'highlight.js/styles/xt256.css'
+    // import 'highlight.js/styles/atom-one-dark.css'
 
     marked.setOptions({
         renderer: new marked.Renderer(),

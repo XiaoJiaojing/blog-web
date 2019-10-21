@@ -45,7 +45,6 @@ export default {
     },
     methods: {
         xianshi () {
-
             // 超小屏时，字体图标的转换
             if(this.$refs.topbar.className === 'fa fa-bars'){
                 this.$refs.topbar.className = 'fa fa-close'
