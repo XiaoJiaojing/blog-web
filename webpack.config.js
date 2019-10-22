@@ -34,7 +34,11 @@ module.exports = {
         proxy: {
             "/home": {
                 target: 'http://localhost:3000'
+            },
+            "/all": {
+                target: 'http://localhost:3000'
             }
+
         }
     }
 }
