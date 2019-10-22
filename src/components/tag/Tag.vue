@@ -67,12 +67,17 @@
     }
 </script>
 
-<style class="scss" scoped>
+<style lang="scss" scoped>
+    @media (max-width: 768px) {
+        .content {
+            margin-bottom: 10px;
+        }
+    }
     h3 {
         font-size: 32px;
-        font-weight: 400;
+        font-weight: 300;
         margin-bottom: 20px;
-        color: #333333;
+        color: #2479CC;
     }
     ul {
         overflow: hidden;
@@ -85,7 +90,6 @@
         margin-right: 20px;
     }
     .mybtn{
-
         height: 40px;
         line-height: 40px;
         border: 1px solid rgba(36,121,204,.8);

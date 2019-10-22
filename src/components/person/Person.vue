@@ -27,6 +27,7 @@
 
     h4 {
         font-size: 28px;
+        font-weight: 300;
         color: #2479cc;
         margin-bottom: 30px;
     }

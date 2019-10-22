@@ -78,7 +78,7 @@
     }
 </script>
 
-<style class="scss" scoped>
+<style lang="scss" scoped>
 
         h2 {
             font-weight: 400;
