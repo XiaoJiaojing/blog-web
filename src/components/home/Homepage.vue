@@ -59,7 +59,6 @@
         methods: {
             getDocument() {
                 this.$http.get('/home?page=' + this.page).then(result => {
-                    console.log(result)
                     if (result.body.err_code === '200') {
                         this.msg = result.body.msg
                         this.msg.forEach(item => {

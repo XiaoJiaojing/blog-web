@@ -14,7 +14,7 @@
 
         <hr>
         <div class="xjj">
-            <p>©2019 - 肖娇静的小站 </p>
+            <p>©2019 - 肖娇静的学习笔记 </p>
             <p>Powered by  Vue2  &  Node</p>
         </div>
     </div>

@@ -1,9 +1,11 @@
 <template>
     <div class="content">
         <!-- 顶部区域  仅在超小屏可见-->
-        <div class="top baseStyle">
-           <span class="fa fa-bars" @click="xianshi" ref="topbar"></span>
-           <p>肖娇静的小站</p>
+        <div class="top">
+           <div class="fa fa-bars leftImg" @click="xianshi" ref="topbar"></div>
+           <span class="title">肖娇静的小站</span>
+           <span class="return" @click="upper">返回</span>
+
         </div>
 
         <!--左侧导航栏-->
@@ -43,27 +45,38 @@ export default {
 
         }
     },
+    created () {
+        this.upper()
+    },
     methods: {
         xianshi () {
             // 超小屏时，字体图标的转换
-            if(this.$refs.topbar.className === 'fa fa-bars'){
-                this.$refs.topbar.className = 'fa fa-close'
-            } else if(this.$refs.topbar.className = 'fa fa-close'){
-                this.$refs.topbar.className = ('fa fa-bars')
+            console.log(this.$refs.topbar.className)
+            if(this.$refs.topbar.className === 'fa fa-bars leftImg'){
+                this.$refs.topbar.className = 'fa fa-close leftImg'
+
+
+            } else if(this.$refs.topbar.className === 'fa fa-close leftImg'){
+                this.$refs.topbar.className = 'fa fa-bars leftImg'
+
             }
-            // 超小屏的导航栏显示与隐藏
-            if(this.$refs.leftnav.style.display === ''){
+
+            if(this.$refs.leftnav.style.display ===''){
                 this.$refs.leftnav.style.display ='block'
-                this.$refs.conright.style.marginLeft = '250px'
-                this.$refs.topbar.style.marginLeft = '250px'
-            } else if (this.$refs.leftnav.style.display === 'block'){
+                this.$refs.conright.style.marginLeft = '160px'
+                this.$refs.topbar.style.marginLeft = '160px'
+            } else if (this.$refs.leftnav.style.display ==='block'){
                 this.$refs.leftnav.style.display =''
                 this.$refs.conright.style.marginLeft = ''
                 this.$refs.topbar.style.marginLeft = ''
-
             }
+
+        },
+        upper () {
+            this.$router.go(-1)
         }
     }
+
 }
 </script>
 
@@ -90,7 +103,6 @@ export default {
         display: block;
         width: 100%;
         height: 70px;
-        text-align: center;
         line-height: 70px;
         color: #fff;
         text-decoration: none;
@@ -103,16 +115,25 @@ export default {
     /*超小屏设备*/
     @media (max-width: 768px) {
         .top {
-            span {
-                font-size: 24px;
-                float: left;
-                padding-left: 10px;
-                padding-top: 13px;
-            }
+            position: fixed;
+            color: #fff;
             width: 100%;
             height: 50px;
             background-color: grey;
             line-height: 50px;
+            font-size: 18px;
+            .leftImg {
+                float: left;
+                margin-left: 10px;
+                margin-top: 13px;
+            }
+            .title {
+                margin-left: 22%;
+            }
+            .return {
+                margin-left: 25%;
+            }
+
 
         }
         .left {
@@ -120,7 +141,7 @@ export default {
             h5 {
                 display: block;
             }
-            width: 250px;
+            width: 150px;
 
         }
         .right {
@@ -139,6 +160,8 @@ export default {
                 h5 {
                     display: none;
                 }
+
+                text-align: center;
                 width: 90px;
             }
             .right {
@@ -157,6 +180,7 @@ export default {
                     display: block;
                 }
                 width: 250px;
+                margin-left: -20px;
             }
             .right {
                 margin-left: 300px;
