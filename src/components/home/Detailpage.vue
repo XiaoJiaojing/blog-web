@@ -40,7 +40,7 @@
         methods: {
             getMore() {
                 console.log(this.id)
-                this.$http.get('/home/detail/?_id=' + this.id).then(result => {
+                this.$http.get('/home/detail?_id=' + this.id).then(result => {
                     this.msg = marked(result.body.msg[0].file, {sanitize: true})
                 })
             }

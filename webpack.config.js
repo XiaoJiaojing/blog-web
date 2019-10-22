@@ -37,6 +37,9 @@ module.exports = {
             },
             "/all": {
                 target: 'http://localhost:3000'
+            },
+            "/tag": {
+                target: 'http://localhost:3000'
             }
 
         }

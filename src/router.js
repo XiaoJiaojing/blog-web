@@ -5,6 +5,7 @@ import Tag from './components/tag/Tag.vue'
 import About from './components/about/About.vue'
 import Person from './components/person/Person.vue'
 import Detailpage from './components/home/Detailpage.vue'
+import Classify from './components/tag/Classify.vue'
 
 var router = new VueRouter({
     routes: [
@@ -13,7 +14,8 @@ var router = new VueRouter({
         {path:'/tag',component:Tag},
         {path:'/about',component:About},
         {path:'/person',component:Person},
-        {path:'/home/more/:id',component: Detailpage}
+        {path:'/home/more/:id',component: Detailpage},
+        {path:'/tag/classify/:tag',component:Classify}
 
     ]
 })

@@ -4,10 +4,10 @@
         <ul>
             <li v-for="item in msg" class="content">
                 <button class="mybtn">
-                    <a href="#">
+                    <router-link :to="'/tag/classify/'+item[0]">
                         {{item[0]}}
                         <span>({{item[1]}})</span>
-                    </a>
+                    </router-link>
                 </button>
             </li>
         </ul>
@@ -24,7 +24,8 @@
     export default {
         data () {
             return {
-                msg:[]
+                msg:[],
+                flag: true
             }
         },
         created () {
