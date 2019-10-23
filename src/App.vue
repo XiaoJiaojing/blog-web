@@ -55,12 +55,10 @@ export default {
             if(this.$refs.topbar.className === 'fa fa-bars leftImg'){
                 this.$refs.topbar.className = 'fa fa-close leftImg'
 
-
             } else if(this.$refs.topbar.className === 'fa fa-close leftImg'){
                 this.$refs.topbar.className = 'fa fa-bars leftImg'
-
             }
-
+            //超小屏时，左侧导航栏的切换
             if(this.$refs.leftnav.style.display ===''){
                 this.$refs.leftnav.style.display ='block'
                 this.$refs.conright.style.marginLeft = '160px'
@@ -73,6 +71,7 @@ export default {
 
         },
         upper () {
+            //返回上一层
             this.$router.go(-1)
         }
     }
@@ -162,7 +161,7 @@ export default {
                 }
 
                 text-align: center;
-                width: 90px;
+                width: 100px;
             }
             .right {
                 margin-left: 140px;
