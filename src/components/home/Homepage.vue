@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="flag">
+        <div v-if="more">
             <div class="content" v-for="item in msg" :key="item._id">
                 <h2 v-html="item.title"></h2>
                 <p class="markdown-body" v-html="item.abstract"></p>
@@ -16,7 +16,7 @@
             </a>
             <hr>
         </div>
-        <h5 v-if="!flag">没有更多</h5>
+        <h5 v-if="!more">没有更多</h5>
     </div>
 
 </template>
@@ -50,7 +50,7 @@
                 msg: [],
                 id: '',
                 page: 1,
-                flag: true
+                more: true
             }
         },
         created() {
@@ -65,7 +65,7 @@
                             item.abstract = marked(item.abstract, {sanitize: true})
                         })
                         if (!this.msg.length) {
-                            this.flag = false
+                            this.more = false
                         }
                     }
                 })

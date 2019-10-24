@@ -51,9 +51,6 @@
                     var arr = []
                     for(var key in obj){
                         if(obj.hasOwnProperty(key)){
-                            // var newObj = {}
-                            // newObj[key] = obj[key]
-                            // arr.push(newObj)
                             var arr1 = []
                             arr1.push(key)
                             arr1.push(obj[key])
