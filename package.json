@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --open --port 8080 --hot "
+    "dev": "node build/dev-server.js",
+    "build": "node build/build.js",
+    "lint": "eslint --ext .js,.vue src"
   },
   "keywords": [],
   "author": "",
@@ -18,9 +19,16 @@
     "babel-preset-stage-0": "^6.24.1",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.4",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
+    "eslint": "^6.5.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^3.0.2",
+    "eventsource-polyfill": "^0.9.6",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^4.2.0",
     "font-awesome": "^4.7.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
     "github-markdown-css": "^3.0.1",
     "highlight.js": "^9.15.10",
     "html-webpack-plugin": "^3.2.0",
@@ -39,7 +47,13 @@
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.2"
+    "webpack-dev-server": "^3.8.2",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
   },
   "dependencies": {}
 }
