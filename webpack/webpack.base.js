@@ -3,11 +3,16 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const htmlPlugin = new HtmlWebpackPlugin({
-    template: path.join(__dirname,'../src/index.html'),
+    template: path.resolve(__dirname,'../src/index.html'),
     filename: './index.html'
 })
 
+const webpack  = require('webpack')
+
+var DashboardPlugin = require('webpack-dashboard')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
+const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
     //开发环境的代码是没有被压缩的，而生产环境的是被压缩的
@@ -17,7 +22,7 @@ module.exports = {
 // 在webpack 4.x中有一个很大的特点，就是约定大于配置，默认的打包入口文件就是src下的index.js
     entry:'./src/index.js',
     output: {
-        path:path.join(__dirname,'../dist')
+        path:path.resolve(__dirname,'../dist')
     },
     plugins: [
         htmlPlugin,

@@ -27,9 +27,6 @@
     import hljs from 'highlight.js'
     import 'github-markdown-css/github-markdown.css'
     import 'highlight.js/styles/darcula.css'
-
-
-
     marked.setOptions({
         renderer: new marked.Renderer(),
         gfm: true,
