@@ -10,15 +10,17 @@
             <p>©2019 - 肖娇静的学习笔记 </p>
             <p>Powered by  Vue2  &  Node</p>
         </div>
-        
 
     </div>
 </template>
 
 <script>
+    import Marked from '../subComponents/Marked.vue'
     export default {
         data () {
-            return {}
+            return {
+
+            }
         }
     }
 </script>
@@ -32,8 +34,15 @@
         margin-bottom: 30px;
     }
     p {
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         color: #666666;
+    }
+    a {
+        text-decoration: none;
+        color: #2489CC;
+    }
+    hr {
+        margin: 20px 0;
     }
     .xjj {
         text-align: center;

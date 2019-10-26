@@ -3,10 +3,10 @@
         <div v-if="flag">
             <div class="content" v-for="item in classifyPage" :key="item._id">
                 <h2 v-html="item.title"></h2>
-                <p class="markdown-body" v-html="item.abstract"></p>
+                <Marked :markStr="item.abstract"></Marked>
 
                 <router-view></router-view>
-                <router-link :to="'/home/more/'+item._id">阅读更多
+                <router-link :to="'/home/more/'+item._id" class="luyou">阅读更多
                     <span class="fa fa-angle-double-right"></span>
                 </router-link>
                 <hr>
@@ -22,25 +22,7 @@
 </template>
 
 <script>
-    import marked from 'marked'
-    import hljs from 'highlight.js'
-    import 'github-markdown-css/github-markdown.css'
-    import 'highlight.js/styles/darcula.css'
-
-    marked.setOptions({
-        renderer: new marked.Renderer(),
-        gfm: true,
-        tables: true,
-        breaks: false,
-        pedantic: false,
-        sanitize: true,
-        smartLists: true,
-        smartypants: false,
-        highlight: function (code) {
-            return hljs.highlightAuto(code).value;
-        }
-    })
-
+    import Marked from '../subComponents/Marked.vue'
     export default {
         data () {
             return {
@@ -60,7 +42,6 @@
                     var arr = result.body.msg //拿到同类的所有数据
                     for(var i=0;i<arr.length;i++){
                         arr[i].page = Math.ceil((i+1)/4)  //重新进行分页设置
-                        arr[i].abstract = marked(arr[i].abstract, {sanitize: true})
                     }
                     this.classifyPage = arr.splice(this.page,this.pageLength) //拿到第一页的同类数据
                     if(!this.classifyPage.length){
@@ -74,6 +55,9 @@
                 this.getClassify()
             }
 
+        },
+        components: {
+            Marked
         }
     }
 </script>
@@ -81,6 +65,7 @@
 <style lang="scss" scoped>
 
         h2 {
+            margin-bottom: 20px;
             font-weight: 400;
             color: #333;
         }
@@ -88,6 +73,15 @@
         p {
             color: #666;
             margin: 30px 0;
+        }
+        hr {
+            margin: 20px 0;
+            background-color: #eee;
+        }
+        .luyou {
+            display: block;
+            padding-top: 20px;
+            text-decoration: none;
         }
 
         a, a:hover {
@@ -107,8 +101,12 @@
         }
         h5 {
             padding: 20px;
+            font-size: 28px;
             color: #2489CC;
 
+        }
+        .next {
+            text-decoration: none;
         }
 
 

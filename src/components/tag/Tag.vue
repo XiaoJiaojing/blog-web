@@ -45,9 +45,6 @@
                             obj[tags] = 1
                         }
                     }
-                    console.log(obj)
-
-
                     var arr = []
                     for(var key in obj){
                         if(obj.hasOwnProperty(key)){
@@ -67,6 +64,7 @@
 <style lang="scss" scoped>
     @media (max-width: 768px) {
         .content {
+            padding: 10px;
             margin-bottom: 10px;
         }
     }
@@ -75,6 +73,9 @@
         font-weight: 300;
         margin-bottom: 20px;
         color: #2479CC;
+    }
+    hr {
+        margin-bottom: 20px;
     }
     ul {
         overflow: hidden;
@@ -87,18 +88,24 @@
         margin-right: 20px;
     }
     .mybtn{
+        padding-left: 10px;
+        padding-right: 10px;
         height: 40px;
         line-height: 40px;
         border: 1px solid rgba(36,121,204,.8);
-        color: rgba(36,121,204,.8);
+
         font-size: 14px;
         border-radius: 6px;
     }
     a {
+        color: #2489CC;
         text-decoration: none;
     }
     .xjj {
         color: #666666;
         text-align: center;
+        p {
+            margin-top: 15px;
+        }
     }
 </style>
