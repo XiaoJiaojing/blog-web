@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import Marked from '../subComponents/Marked.vue'
+    import Marked from '../subComponents/MarkParse.vue'
     export default {
         data () {
             return {

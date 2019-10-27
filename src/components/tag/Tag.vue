@@ -2,11 +2,10 @@
     <div>
         <h3>标签</h3>
         <ul>
-            <li v-for="item in msg" class="content">
+            <li v-for="item in tags" class="content">
                 <button class="mybtn">
-                    <router-link :to="'/tag/classify/'+item[0]">
-                        {{item[0]}}
-                        <span>({{item[1]}})</span>
+                    <router-link :to="'/home/tag/'+item.name">
+                        {{item.name}}
                     </router-link>
                 </button>
             </li>
@@ -23,7 +22,7 @@
     export default {
         data () {
             return {
-                msg:[],
+                tags:[],
                 flag: true
             }
         },
@@ -32,28 +31,8 @@
         },
         methods: {
             getAll () {
-                this.$http.get('/all').then(result=>{
-                    var ret = result.body.msg
-                    var obj = {}
-                    var count = 1
-                    for(var i=0;i<ret.length;i++){
-                        var tags = ret[i].tag
-                        if(obj[tags]){
-                            obj[tags] += count
-                        }else {
-                            obj[tags] = 1
-                        }
-                    }
-                    var arr = []
-                    for(var key in obj){
-                        if(obj.hasOwnProperty(key)){
-                            var arr1 = []
-                            arr1.push(key)
-                            arr1.push(obj[key])
-                            arr.push(arr1)
-                        }
-                    }
-                   this.msg = arr
+                this.$http.get('/api/tags/all').then(result=>{
+                    this.tags = result.body.data
                 })
             }
         }

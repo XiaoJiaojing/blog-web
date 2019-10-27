@@ -18,34 +18,35 @@
 <script>
     import Top from './components/subComponents/Top.vue'
     import Leftnav from './components/subComponents/Leftnav.vue'
+
     export default {
-    data () {
-        return {
-            show: false
-        }
-    },
-     computed: {
-        contentMove () {
-            return this.show = this.$store.getters.getShowValue ? true:false
+        data() {
+            return {
+                show: false
+            }
+        },
+        computed: {
+            contentMove() {
+                return this.show = this.$store.getters.getShowValue ? true : false
 
+            }
+
+        },
+        watch: {
+            show: function (newVal) {
+                if (newVal) {
+                    this.$refs.conright.style.marginLeft = '150px'
+                } else {
+                    this.$refs.conright.style.marginLeft = ''
+                }
+            }
+        },
+        components: {
+            Top,
+            Leftnav
         }
 
-    },
-     watch: {
-         show: function (newVal) {
-             if(newVal){
-                 this.$refs.conright.style.marginLeft = '150px'
-             }else {
-                 this.$refs.conright.style.marginLeft = ''
-             }
-         }
-     },
-    components: {
-        Top,
-        Leftnav
     }
-
-}
 </script>
 
 
@@ -68,6 +69,7 @@
 
         }
     }
+
     /*中屏以上设备*/
     @media (min-width: 992px) {
         .right {

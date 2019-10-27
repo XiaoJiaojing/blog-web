@@ -1,34 +1,33 @@
 <template>
     <div>
-        <div v-html="msg" class="markdown-body"></div>
-
+        <MarkParse :content="articalContent"></MarkParse>
     </div>
 </template>
 
 <script>
-    import marked from 'marked'
-    import hljs from 'highlight.js'
-    import 'github-markdown-css/github-markdown.css'
-    import 'highlight.js/styles/darcula.css'
+
+    import MarkParse from '../subComponents/MarkParse.vue'
 
     export default {
         data() {
             return {
                 id: this.$route.params.id,
-                msg: ''
+                articalContent: ''
             }
         },
         created() {
             this.getMore()
         },
         methods: {
-            getMore() {
-                console.log(this.id)
-                this.$http.get('/home/detail?_id=' + this.id).then(result => {
-                    this.msg = marked(result.body.msg[0].file, {sanitize: true})
-
+            getMore: function () {
+                this.$http.get('api/article/detail?_id=' + this.id).then(result => {
+                    this.articalContent = result.body.data[0].file
+                    console.log(result.body)
                 })
             }
+        },
+        components: {
+            MarkParse
         }
     }
 </script>

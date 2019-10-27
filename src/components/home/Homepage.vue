@@ -4,7 +4,7 @@
         <div v-if="more">
             <div class="content" v-for="item in msg" :key="item._id">
                 <h2 v-html="item.title"></h2>
-                <Marked :markStr="item.abstract"></Marked>
+                <MarkParse :content="item.abstract"></MarkParse>
 
 
                 <router-link :to="'/home/more/'+item._id" class="luyou">
@@ -24,12 +24,14 @@
 </template>
 
 <script>
-    import Marked from '../subComponents/Marked.vue'
+    import MarkParse from '../subComponents/MarkParse.vue'
+
     export default {
         data() {
             return {
                 msg: [],
                 id: '',
+                tagName: this.$route.params.tagName,
                 page: 1,
                 more: true
             }
@@ -40,13 +42,11 @@
         methods: {
             getDocument() {
                 // 根据 page 获取数据 渲染页面
-                this.$http.get('/home?page=' + this.page).then(result => {
-                    if (result.body.err_code === '200') {
-                        this.msg = result.body.msg
-                        if (!this.msg.length) {
-                            this.more = false
-                        }
-                    }
+                var suff = this.tagName ? '&tag=' + this.tagName : ''
+                this.$http.get('/api/articles?page=' + this.page + suff).then(result => {
+                    this.msg = result.body.data
+                    this.more = result.body.more
+
                 })
             },
             getNext() {
@@ -55,8 +55,17 @@
                 this.getDocument()
             }
         },
+        watch: {
+            '$route'(to, from) {
+                if (this.$route.params.tagName) {
+
+                }
+                this.getDocument();
+                console.log("..." + this.$route.params)
+            }
+        },
         components: {
-            Marked
+            MarkParse
         }
     }
 </script>
@@ -65,12 +74,14 @@
 <style lang="scss" scoped>
     .content {
         border-bottom: 1px solid #ddd;
+
         h2 {
             margin-bottom: 20px;
             margin-top: 20px;
             font-weight: 400;
             color: #333;
         }
+
         hr {
             margin: 20px 0;
             background-color: #ddd;
@@ -81,17 +92,20 @@
         p {
             color: #666;
         }
+
         .luyou {
             display: block;
             padding-top: 20px;
             padding-bottom: 20px;
 
         }
+
         a, a:hover {
             color: #2489CC;
             cursor: pointer;
             text-decoration: none;
         }
+
         .next {
             padding-top: 20px;
             padding-bottom: 20px;
@@ -111,6 +125,7 @@
 
             }
         }
+
         h5 {
             color: #2489CC;
         }

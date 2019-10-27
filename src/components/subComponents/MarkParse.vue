@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="markdown-body" v-html="msg"></div>
+        <div class="markdown-body" v-html="compiledMarkdown"></div>
     </div>
 
 </template>
@@ -21,10 +21,10 @@
         sanitize: true,
         smartLists: true,
         smartypants: false,
-        highlight: function (code) {
+        highlight (code) {
             return hljs.highlightAuto(code).value;
         }
-    })
+    });
 
     export default {
         data () {
@@ -32,13 +32,17 @@
                 msg: ''
             }
         },
-        props: ['markStr'],
-        created () {
-            this.markedAndHightlight(this.markStr)
+        props: {
+            content: {
+                type: String,
+                default: ''
+            }
         },
-        methods: {
-            markedAndHightlight(str) {
-               this.msg = marked(str,{sanitize: true})
+        computed: {
+            compiledMarkdown () {
+                return marked(this.content, {
+                    sanitize: true
+                });
             }
         }
     }

@@ -19,16 +19,7 @@ module.exports = merge(baseConfig,{
   },
     devServer: {
         proxy: {
-            "/home": {
-                target: 'http://localhost:3000'
-            },
-            "/all": {
-                target: 'http://localhost:3000'
-            },
-            "/tag": {
-                target: 'http://localhost:3000'
-            }
-
+            '/api': 'http://localhost:3000'
         }
     }
 })
