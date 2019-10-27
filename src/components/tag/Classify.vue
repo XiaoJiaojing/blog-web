@@ -9,12 +9,10 @@
                 <router-link :to="'/home/more/'+item._id" class="luyou">阅读更多
                     <span class="fa fa-angle-double-right"></span>
                 </router-link>
-                <hr>
             </div>
             <a href="#" @click="getNext" class="next">下一页
                 <span class="fa fa-angle-double-right"></span>
             </a>
-            <hr>
         </div>
         <h5 v-if="!flag">没有更多</h5>
     </div>
@@ -63,7 +61,8 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .content{
+        border-bottom: 1px solid #ddd;
         h2 {
             margin-bottom: 20px;
             font-weight: 400;
@@ -81,6 +80,7 @@
         .luyou {
             display: block;
             padding-top: 20px;
+            padding-bottom: 20px;
             text-decoration: none;
         }
 
@@ -88,7 +88,10 @@
             color: #2489CC;
             cursor: pointer;
         }
-
+        .next {
+            display: block;
+            padding-top: 20px;
+        }
         @media (max-width: 768px) {
             .next {
                 margin-left: 75%;
@@ -108,6 +111,7 @@
         .next {
             text-decoration: none;
         }
+    }
 
 
 </style>

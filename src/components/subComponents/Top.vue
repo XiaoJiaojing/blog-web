@@ -1,6 +1,6 @@
 <template>
-    <div class="top">
-        <div class="fa fa-bars leftImg" @click="show" ref="topbar"></div>
+    <div class="top" ref="topbar">
+        <div class="fa fa-bars leftImg" @click="show" ref="topImg"></div>
         <span class="title">肖娇静的小站</span>
         <span class="return" @click="upper">返回</span>
     </div>
@@ -15,24 +15,16 @@
             // 点击，显示和隐藏左侧的导航栏 以及字体图标的转换
             show () {
                 // 字体图标的转换
-                if(this.$refs.topbar.className === 'fa fa-bars leftImg'){
-                    this.$refs.topbar.className = 'fa fa-close leftImg'
+                if(this.$refs.topImg.className === 'fa fa-bars leftImg'){
+                    this.$refs.topImg.className = 'fa fa-close leftImg'
+                    this.$refs.topbar.style.marginLeft = '150px'
+                    this.$store.commit('changeShowValue',true)
 
-                } else if(this.$refs.topbar.className === 'fa fa-close leftImg'){
-                    this.$refs.topbar.className = 'fa fa-bars leftImg'
+                } else if(this.$refs.topImg.className === 'fa fa-close leftImg'){
+                    this.$refs.topImg.className = 'fa fa-bars leftImg'
+                    this.$refs.topbar.style.marginLeft = ''
+                    this.$store.commit('changeShowValue',false)
                 }
-
-                // console.log(this.$refs.leftnav)
-                // // 左侧导航栏的切换
-                // if(this.$refs.leftnav.style.display ===''){
-                //     this.$refs.leftnav.style.display ='block'
-                //     this.$refs.conright.style.marginLeft = '160px'
-                //     this.$refs.topbar.style.marginLeft = '160px'
-                // } else if (this.$refs.leftnav.style.display ==='block'){
-                //     this.$refs.leftnav.style.display =''
-                //     this.$refs.conright.style.marginLeft = ''
-                //     this.$refs.topbar.style.marginLeft = ''
-                // }
 
             },
             upper () {
@@ -49,6 +41,7 @@
 
     @media (max-width: 768px) {
         .top {
+            text-align: center;
             width: 100%;
             position: fixed;
             color: #fff;
@@ -62,10 +55,10 @@
                 margin-top: 13px;
             }
             .title {
-                margin-left: 22%;
             }
             .return {
-                margin-left: 25%;
+                float: right;
+                margin-right: 10px;
             }
         }
 
@@ -80,6 +73,5 @@
         .top {
             display: none;
         }
-
     }
 </style>

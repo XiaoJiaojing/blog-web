@@ -1,5 +1,5 @@
 <template>
-    <div class="left baseStyle leftCommonStyle" ref="leftnav">
+    <div class="left baseStyle leftCommonStyle" ref="leftnav" :show="getShow">
         <h5>肖娇静的博客</h5>
         <router-link class="supai" to="/home" >
             <span class="fa fa-home"></span>
@@ -18,10 +18,33 @@
             <span >个人</span>
         </router-link>
     </div>
+
 </template>
 
 <script>
     import 'font-awesome/css/font-awesome.css'
+    export default {
+        data () {
+            return {
+                show: false
+            }
+        },
+
+        computed: {
+            getShow () {
+                return this.show = this.$store.getters.getShowValue ? true:false
+            }
+        },
+        watch: {
+            show: function (newVal) {
+                if(newVal){
+                    this.$refs.leftnav.style.display = 'block'
+                }else {
+                    this.$refs.leftnav.style.display = ''
+                }
+            }
+        }
+    }
 </script>
 
 <style lang="scss" scoped>

@@ -12,7 +12,6 @@
             </li>
         </ul>
 
-        <hr>
         <div class="xjj">
             <p>©2019 - 肖娇静的学习笔记 </p>
             <p>Powered by  Vue2  &  Node</p>
@@ -74,9 +73,7 @@
         margin-bottom: 20px;
         color: #2479CC;
     }
-    hr {
-        margin-bottom: 20px;
-    }
+
     ul {
         overflow: hidden;
         padding: 0;
@@ -102,6 +99,7 @@
         text-decoration: none;
     }
     .xjj {
+        border-top: 1px solid #ddd;
         color: #666666;
         text-align: center;
         p {

@@ -11,12 +11,12 @@
                     <span>阅读更多</span>
                     <span class="fa fa-angle-double-right"></span>
                 </router-link>
-                <hr>
+
             </div>
             <a href="#" @click="getNext" class="next">下一页
                 <span class="fa fa-angle-double-right"></span>
             </a>
-            <hr>
+
         </div>
         <h5 v-if="!more">没有更多</h5>
     </div>
@@ -64,15 +64,18 @@
 
 <style lang="scss" scoped>
     .content {
-
+        border-bottom: 1px solid #ddd;
         h2 {
             margin-bottom: 20px;
+            margin-top: 20px;
             font-weight: 400;
             color: #333;
         }
         hr {
             margin: 20px 0;
-            background-color: #eee;
+            background-color: #ddd;
+            border-width: 1px;
+
         }
 
         p {
@@ -81,6 +84,7 @@
         .luyou {
             display: block;
             padding-top: 20px;
+            padding-bottom: 20px;
 
         }
         a, a:hover {
@@ -88,15 +92,23 @@
             cursor: pointer;
             text-decoration: none;
         }
+        .next {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            display: block;
+        }
 
         @media (max-width: 768px) {
             .next {
-                margin-left: 75%;
+
+                margin-left: 80%;
+
             }
         }
         @media (min-width: 768px) {
             .next {
                 margin-left: 90%;
+
             }
         }
         h5 {

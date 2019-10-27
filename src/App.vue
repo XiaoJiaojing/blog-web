@@ -7,7 +7,7 @@
         <Leftnav ref="leftnav"></Leftnav>
 
         <!--右侧内容区域-->
-        <div class="right" ref="conright">
+        <div class="right" ref="conright" :show="contentMove">
             <router-view></router-view>
 
         </div>
@@ -21,9 +21,25 @@
     export default {
     data () {
         return {
-
+            show: false
         }
     },
+     computed: {
+        contentMove () {
+            return this.show = this.$store.getters.getShowValue ? true:false
+
+        }
+
+    },
+     watch: {
+         show: function (newVal) {
+             if(newVal){
+                 this.$refs.conright.style.marginLeft = '150px'
+             }else {
+                 this.$refs.conright.style.marginLeft = ''
+             }
+         }
+     },
     components: {
         Top,
         Leftnav
@@ -48,7 +64,7 @@
     @media (min-width: 768px) {
         .right {
             margin-left: 130px;
-            padding-top: 30px;
+            padding-top: 20px;
 
         }
     }
@@ -56,7 +72,7 @@
     @media (min-width: 992px) {
         .right {
             margin-left: 280px;
-            padding-top: 30px;
+            padding-top: 20px;
 
         }
     }

@@ -5,7 +5,7 @@
         <p>联系邮箱：13098805730@163.com</p>
         <a href="https://github.com/XiaoJiaojing">我的gitHub</a>
 
-        <hr>
+
         <div class="xjj">
             <p>©2019 - 肖娇静的学习笔记 </p>
             <p>Powered by  Vue2  &  Node</p>
@@ -41,10 +41,11 @@
         text-decoration: none;
         color: #2489CC;
     }
-    hr {
-        margin: 20px 0;
-    }
+
     .xjj {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #ddd;
         text-align: center;
     }
 
