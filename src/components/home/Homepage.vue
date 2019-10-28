@@ -11,7 +11,6 @@
                     <span>阅读更多</span>
                     <span class="fa fa-angle-double-right"></span>
                 </router-link>
-
             </div>
             <a href="#" @click="getNext" class="next" v-if="more">下一页
                 <span class="fa fa-angle-double-right"></span>
@@ -32,7 +31,6 @@
         data() {
             return {
                 articlelist: [],
-                id: '',
                 tagId: this.$route.params.tagId,
                 page: 1,
                 pageSize:4,
@@ -78,7 +76,7 @@
 <style lang="scss" scoped>
     .content {
         border-bottom: 1px solid #ddd;
-
+        margin-right: 30px;
         h2 {
             margin-bottom: 20px;
             margin-top: 20px;
