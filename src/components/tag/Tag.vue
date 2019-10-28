@@ -4,7 +4,7 @@
         <ul>
             <li v-for="item in tags" class="content">
                 <button class="mybtn">
-                    <router-link :to="'/home/tag/'+item.name">
+                    <router-link :to="'/home/tag/'+item.id">
                         {{item.name}}
                     </router-link>
                 </button>

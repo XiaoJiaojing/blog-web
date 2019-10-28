@@ -1,8 +1,8 @@
 <template>
     <div>
         <router-view></router-view>
-        <div v-if="more">
-            <div class="content" v-for="item in msg" :key="item._id">
+        <div>
+            <div class="content" v-for="item in articlelist" :key="item._id">
                 <h2 v-html="item.title"></h2>
                 <MarkParse :content="item.abstract"></MarkParse>
 
@@ -13,12 +13,14 @@
                 </router-link>
 
             </div>
-            <a href="#" @click="getNext" class="next">下一页
+            <a href="#" @click="getNext" class="next" v-if="more">下一页
                 <span class="fa fa-angle-double-right"></span>
             </a>
+            <div v-if="!more" class="noMore">
+                没有更多
+            </div>
 
         </div>
-        <h5 v-if="!more">没有更多</h5>
     </div>
 
 </template>
@@ -29,22 +31,27 @@
     export default {
         data() {
             return {
-                msg: [],
+                articlelist: [],
                 id: '',
-                tagName: this.$route.params.tagName,
+                tagId: this.$route.params.tagId,
                 page: 1,
-                more: true
+                pageSize:4,
+                more: true,
             }
         },
         created() {
-            this.getDocument()
+            this.getArticlelist()
         },
         methods: {
-            getDocument() {
+            getArticlelist() {
                 // 根据 page 获取数据 渲染页面
-                var suff = this.tagName ? '&tag=' + this.tagName : ''
-                this.$http.get('/api/articles?page=' + this.page + suff).then(result => {
-                    this.msg = result.body.data
+
+                var paramsObj = {page:this.page,pageSize:this.pageSize,tagId: this.tagId}
+
+
+                this.$http.get('/api/articles',{params:paramsObj}).then(result=>{
+                    // console.log(result.body)
+                    this.articlelist = result.body.data
                     this.more = result.body.more
 
                 })
@@ -52,16 +59,13 @@
             getNext() {
                 // 点击的时候  page+1 重新请求数据
                 this.page++
-                this.getDocument()
+                this.getArticlelist()
             }
         },
         watch: {
             '$route'(to, from) {
-                if (this.$route.params.tagName) {
-
-                }
-                this.getDocument();
-                console.log("..." + this.$route.params)
+                this.tagId = ''
+                this.getArticlelist()
             }
         },
         components: {
@@ -128,6 +132,12 @@
 
         h5 {
             color: #2489CC;
+        }
+        .noMore {
+            font-size: 20px;
+            color: #2489CC;
+            text-align: center;
+            margin-top: 20px;
         }
     }
 

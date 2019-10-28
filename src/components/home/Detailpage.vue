@@ -21,7 +21,7 @@
         methods: {
             getMore: function () {
                 this.$http.get('api/article/detail?_id=' + this.id).then(result => {
-                    this.articalContent = result.body.data[0].file
+                    this.articalContent = result.body.data[0].content
                     console.log(result.body)
                 })
             }

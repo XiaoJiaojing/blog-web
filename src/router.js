@@ -14,7 +14,7 @@ var router = new VueRouter({
         {path: '/about', component: About},
         {path: '/person', component: Person},
         {path: '/home/more/:id', component: Detailpage},
-        {path: '/home/tag/:tagName', component: Homepage}
+        {path: '/home/tag/:tagId', component: Homepage}
     ]
 })
 
