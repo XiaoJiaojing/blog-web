@@ -32,7 +32,7 @@
         methods: {
             getAll () {
                 this.$http.get('/api/tags/all').then(result=>{
-                    this.tags = result.body.data
+                    this.tags = result.body.data.splice(0,4)
                 })
             }
         }

@@ -48,7 +48,7 @@
 
 
                 this.$http.get('/api/articles',{params:paramsObj}).then(result=>{
-                    // console.log(result.body)
+
                     this.articlelist = result.body.data
                     this.more = result.body.more
 
@@ -76,7 +76,6 @@
 <style lang="scss" scoped>
     .content {
         border-bottom: 1px solid #ddd;
-        margin-right: 30px;
         h2 {
             margin-bottom: 20px;
             margin-top: 20px;
@@ -115,13 +114,15 @@
         }
 
         @media (max-width: 768px) {
+
             .next {
-
-                margin-left: 80%;
-
+                margin-left: 75%;
             }
         }
         @media (min-width: 768px) {
+            .content {
+                margin-right: 30px;
+            }
             .next {
                 margin-left: 90%;
 
