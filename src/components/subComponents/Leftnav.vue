@@ -1,5 +1,5 @@
 <template>
-    <div class="left baseStyle leftCommonStyle" ref="leftnav" :show="getShow">
+    <div class="left baseStyle leftCommonStyle" :show="getShow" >
         <h5>肖娇静的小站</h5>
         <router-link class="supai" to="/home" >
             <span class="fa fa-home"></span>
@@ -33,6 +33,8 @@
         computed: {
             getShow () {
                 return this.show = this.$store.getters.getShowValue ? true:false
+
+
             }
         },
         watch: {

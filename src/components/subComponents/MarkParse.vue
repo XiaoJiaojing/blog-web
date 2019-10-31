@@ -29,7 +29,7 @@
     export default {
         data () {
             return {
-                msg: ''
+
             }
         },
         props: {
@@ -48,6 +48,6 @@
     }
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 
 </style>
